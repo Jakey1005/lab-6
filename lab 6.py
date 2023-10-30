@@ -34,7 +34,7 @@ def encode(num):
     result = ""
     for i in range(len(str(num))):
         # when num is > 8, it prints 11, rather than 1, must use %10
-        result += str(int(num[i]) + 3)
+        result += str(int((num[i]) + 3) % 10)
     return str(result)
 
 # decode function
