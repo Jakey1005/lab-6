@@ -13,7 +13,8 @@ def main():
             encoded_password = encode(password)
       #Prints both password and encoded password
         if option == "2":
-            print("The encoded password is " + encoded_password + ", and the original password is " + str(password) + ".")
+            decoded_password = decoder(encoded_password)
+            print("The encoded password is " + encoded_password + ", and the original password is " + decoded_password + ".")
             print("")
       #Ends loop
         if option == "3":
@@ -32,9 +33,17 @@ def display_menu():
 def encode(num):
     result = ""
     for i in range(len(str(num))):
+        # when num is > 8, it prints 11, rather than 1, must use %10
         result += str(int(num[i]) + 3)
     return str(result)
 
+# decode function
+def decoder(num):
+    result = ''
+    for n in num:
+        new_digit = str((int(n) - 3) % 10)
+        result += new_digit
+    return result
 
 if __name__ == "__main__":
     main()
